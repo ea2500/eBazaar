@@ -1,0 +1,28 @@
+
+<% if current_user.admin? %>
+  <h2>Listing all products for admin "<%= current_user.name %>"</h2>
+<% else %>
+  <h2>Products posted by "<%= current_user.name %>"</h2>
+<% end %>
+
+<%= will_paginate @products, class: "pagin" %>
+  <table>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr class="<%= cycle('line-odd','line-even') %>">
+          <td class="img-cell"><%= image_tag(product.image_url, class: "list-image") %></td>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td><%= associated_orders_count(product) %> orders </td>
+          <td><%= link_to 'Show', product, class: "list-link" %></td>
+          <td><%= link_to 'Edit', edit_product_path(product), class: "list-link" %></td>
+          <td><%= link_to 'Delete', product, class: "list-link", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= will_paginate @products, class: "pagin" %>
+
+
+<%= link_to 'Add new product', new_product_path %>
+<%#= link_to 'CATALOG', catalog_path %>

@@ -1,0 +1,53 @@
+
+
+<div class="merhaba">
+  <h1>Welcome to eBazaar </h1>
+  <strong>... sell your goods to buy more goods ...</strong>
+  <p> * with this app you can advertise your things that you like to sell and/or you can shop for other prodcuts *</p>
+  <p> * add items into the shopping cart and check out for the purchase order *</p>
+  <p> * to sell and manage your products you need to sign up an account first *</p>
+  <p><%= button_to 'Sign up now !', signup_path, method: :get %></p>
+  <p><%= link_to 'see the whole catalog', catalog_path %></p>
+</div>
+<p id='signiture'>Site creator: <strong>Erdinc Atilgan</strong>, erdinc.atilgan@gmail.com, 917-374-0473</p>
+
+<!-- 
+<h3>Features</h3>
+<ul> 
+  <li> <strong> user log-in/out </strong> Users of the site should login to advertise and manage their products </li>
+  <li> <strong> administrators </strong> Admins as super users they can execsize may rights when they sign in: 1) They can see all the users and manage them (delete/edit) 2) They can see all the products and manage them (delete/edit) 3) They can see and edit other admins but they can not delete any admin 4) No admin can be added to the site through browser </li>
+  <li> <strong> validations </strong> validations on form entries </li>
+  <li> <strong> authorizations </strong> appropriet authorization checks </li>
+  <li> <strong> remembering the computer </strong> If chosen site remembers the computer for easy login by bypassing the login entry form. It remembers when the browser is closed by the user. When logged out the feature resets, meaning user has to login in next visit. </li>
+</ul> -->
+
+
+
+<h3>Random Samples</h3>
+<table>
+  <!-- <thead>
+    <tr>
+      <th> image </th>
+      <th> Name+Description+Price </th>
+      <th> Seller name+email+ID </th>
+      <th> Mark-It </th>
+    </tr>
+  </thead> -->
+  <tbody>
+    <% @ps.each do |product| %>
+      <tr class="<%= cycle('line-odd','line-even') %>">
+        <% if logged_in? and current_user == product.user %>
+          <tr class='line-user'>
+        <% end %>
+        <td class="img-cell"><%= image_tag(product.image_url, class: 'cat-image') %></td>
+        <td><strong><%= product.name %></strong><br/>
+          <%= truncate(product.body, length: 200) %><br/>
+          <strong><%= number_to_currency(product.price) %> </strong><%= link_to "moere details", product_path(product)%></td>
+        <td>
+          <%= button_to "add to cart", cart_items_path(product_id: product), class: "button-cart" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

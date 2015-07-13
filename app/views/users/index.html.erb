@@ -1,0 +1,52 @@
+<h1>Listing users</h1>
+
+
+<%= link_to 'New User', signup_path %>
+
+<%=  will_paginate @users, class: "pagin"%>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th># products</th>
+      <th>USER ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>admin?</th>
+    </tr>
+  </thead>
+
+  <tbody>    
+    <% @users.each do |user| %>
+      <% if user.admin? %>
+        <tr class="line-admin"> 
+      <% else %>
+        <tr class="<%= cycle('line-odd','line-even') %>">
+      <% end %>
+        <td><%= image_tag(user.image_url, class: "list-image") %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.products.size %></td>
+        <td><%= user.id %></td>
+        <td><%= link_to 'Show', user, class: "list-link" %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class: "list-link" %></td>
+      <% if user.admin? %>
+        <td> </td>
+      <% else %>
+        <td><%= link_to 'Destroy', user, class: "list-link", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+        <td><%= user.admin? %></td>
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+
+<%= will_paginate @users, class: "pagin"%>
+
+
+

@@ -1,0 +1,2 @@
+module VitrinHelper
+end

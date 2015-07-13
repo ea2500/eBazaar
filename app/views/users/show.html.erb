@@ -1,0 +1,57 @@
+
+<h2> Account Information </h2>
+
+<table>
+  <tr>
+    <td><%= image_tag(@user.image_url, class: 'show-image') %></td>
+    <td>
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+      <p>
+        <%= link_to 'Edit', edit_user_path(@user) %> 
+        <% if logged_in? and current_user.admin? %>
+        | <%= link_to 'Back', users_path %>
+        <% end %>
+      </p>
+    </td>
+  </tr>
+</table>
+
+
+
+<h4> List of products posted </h4>
+<% products=@user.products.paginate(page: params[:page], per_page: 5) %>
+<%= will_paginate products, class: "pagin" %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= number_to_currency(product.price) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%#= will_paginate products, class: "pagin" %>
+
+<%= link_to 'Add/Edit your products', products_path  %>
+<% unless @user.admin? %>
+	<p> ----------------------------------------------------------- </p>
+	<p> !!! if you delete your account you will loose all your data and you will be logged out !!! </p>
+	<%= button_to '! delete this user account !', user_path(@user), method: :delete, 
+		data: { confirm: 
+		'CAUTION!!! You will be logged out and all your data will be lost... Are you sure?' } %>
+<% end %>

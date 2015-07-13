@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> <%= controller.controller_name %> </title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+	
+	<div id="columns">
+		<div id="side">
+			<div id='search'>
+			<%= form_tag catalog_path, method: :get do %>
+				<%= label_tag :search_text, 'Search Products' %>
+				<%= text_field_tag :search_text, params[:search_text] %>
+				<%= submit_tag "Search" %>
+			<% end %>
+			</div>
+			<ul>
+				<li> <%= link_to "Home" , root_url %> </li>
+				<li> <%= link_to "Help" , '#' %> </li>
+				<li> <%= link_to "sell : MY PPODUCTS", products_path %> </li>
+				<li> <%= link_to "shop : CATALOG", catalog_path %> </li>
+			</ul>
+
+			<div id="logInOut">
+				<% if logged_in? %>
+					<%= button_to "LOGOUT", logout_url, method: :delete, class: :sup %>
+					<%= "user id: #{current_user.id}" %> <br />
+					<%= "email: #{current_user.email}" %> <br />
+					<%= "user: #{current_user.name}" %> <br />
+					<%= "admin?: #{current_user.admin?}" %>  <br />
+					<%= "product IDs: #{current_user.products.map{|p| p.id}}" %> 
+					<%= button_to "Account Info", current_user, method: :get %> 
+					<%= image_tag(current_user.image_url, class: 'list-image') %> <br/>
+					<%= link_to "my shopping cart", "#" %>
+					<% if current_user.admin? %>
+						<br/>
+						<%= link_to "All Users", users_path %>
+					<% end%>
+
+				<% else %>
+					<%= button_to "LOGIN", login_url, method: :get, class: :sup %>
+				<% end %>
+			</div>
+
+		</div>
+
+
+		<div id='main'>
+			<div id="banner">
+				<h1> Welcome to Market Mark-It </h1>
+				<%= current_user ? [current_user.id, current_user.dummy] : [] %> <br />
+				<% who=valid_cookie_user ? valid_cookie_user.id : "nah" %> 
+				<%= [cookies.signed[:user_id], cookies[:dummy], who] %> <br />
+				
+				<% flash.each do |name, message| %>
+		      		<div class="<%= name %>"><%= message %></div>
+		    	<% end %>
+			</div>
+			<div class="<%= controller.controller_name %>" >
+				<%= yield %>
+			</div>
+		</div>
+
+	</div>
+	
+	<div class='footer'>
+		<%= render '/layouts/footer' %>
+		<%= debug(params) if Rails.env.development? %>
+	</div>
+
+</body>
+
+</html>

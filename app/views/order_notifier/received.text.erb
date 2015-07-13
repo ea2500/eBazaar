@@ -1,0 +1,14 @@
+
+Hi <%= @order.name %>,  
+
+You ordered the following items from eBazaar:
+<% @order.cart_items. each do |item| %>
+	<%= item.quantity %> x <%= item.product.name %>
+<% end %>
+
+You will receive a notification when items are shipped.
+
+Thanks for your order.
+
+
+

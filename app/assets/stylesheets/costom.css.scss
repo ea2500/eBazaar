@@ -1,0 +1,137 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body{
+	background: white;
+	padding-top: 9em;
+}
+section{
+	overflow: auto;
+}
+textarea{
+	resize: vertical;
+}
+td, th{
+	padding: 10px;
+	border-radius: 20px;
+	
+}
+.center{
+	text-align: center;
+}
+#logo{
+	float: left;
+	margin-right: 10px;
+	margin-top: 5px;
+	font-size: 1.8em;
+	color: white;
+	letter-spacing: -1px;
+	padding-right: 10px;
+	padding-left: 10px;
+	font-weight: bold;
+	border: 2px solid white;
+	border-radius: 3px;
+}
+#catalog-logo{
+	float: left;
+	margin-right: 10px;
+	margin-top: 8px;
+	font-size: 20px;
+	color: white;
+	letter-spacing: -1px;
+	padding: 4px;
+	font-weight: bold;
+}
+#cart-logo{
+	float: left;
+	margin-right: 10px;
+	margin-top: 11px;
+	font-size: 17px;
+	color: white;
+	letter-spacing: -1px;
+	padding: 4px;
+	/*font-weight: bold;*/
+}
+#logo:hover{
+	color: pink;
+	text-decoration: underline;
+}
+#cat-logo:hover{
+	color: pink;
+	text-decoration: underline;
+}
+.cat-image{
+	max-height: 80px;
+	max-width: 80px;
+}
+.list-image{
+	max-height: 50px;
+	max-width: 50px;
+}
+.show-image{
+	max-height: 250px;
+	max-width: 250px;
+}
+.list-link{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.line-odd{
+	background: pink;
+}
+.line-even{
+	background: #e0f8f8;
+}
+.line-user{
+	background: gray;
+}
+.line-admin{
+	background: yellow;
+}
+#search-bar{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: inline;
+	width: 20em;
+	display: inline;
+}
+.success, .failure, .notice, .inform{
+	text-align: center;
+	display: inline;
+	float: right;
+	padding-left: 10px;
+}
+.success{
+	color: pink;
+}
+.failure{
+	color: red;
+}
+.notice{
+	color: yellow;
+}
+.inform{
+	color: white;
+}
+.merhaba{
+	text-align: center;
+	background-color: pink;
+	border: 5px solid black;
+	border-radius: 3em;
+}
+#signiture{
+	float: right;
+	font-size: 12px;
+}
+.img-cell{
+	text-align: center;
+}
+.pagin{
+	font-size: 14px;
+}
+.button-cart{
+	font-size: 12px;
+	max-height: 80px;
+	max-height: 80px;
+}

@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+p1:
+  name: MyString 1
+  price: 1.99
+  image_url: object1.jpg
+  body: explain 1
+  user_id: user1
+
+p2:
+  name: MyString 2
+  price: 2.99
+  image_url: object2.jpg
+  body: explain 2
+  user_id: user1
+
+p3:
+  name: MyString 3
+  price: 3.99
+  image_url: object3.jpg
+  body: explain 3
+  user_id: user2   

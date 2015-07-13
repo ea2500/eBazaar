@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>eBazaar/<%= controller.controller_name %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+	<header class="navbar navbar-fixed-top navbar-inverse">
+		<div class="container"> 
+			<%= link_to "eBazaar", root_url, id:'logo' %>
+			<%= link_to "Catalog", catalog_url, id:'catalog-logo' %>
+			<%= link_to "Shopping Cart [#{number_of_cart_items(current_cart)}]", cart_items_url, id:'cart-logo' %>
+			<nav>
+				<ul class="nav navbar-nav navbar-right">
+					<% if current_user %>
+						<li><%= link_to "Account Info", user_path(current_user) %></li>
+						<% if current_user.admin? %>
+							<li><%= link_to "All Orders", orders_path %></li>
+							<li><%= link_to "All Carts", carts_path %></li>
+							<li><%= link_to "All Cart_Items", cart_items_url %></li>
+							<li><%= link_to "All Users", users_path %></li>
+							<li><%= link_to "All Products", products_path %></li>
+						<% else %>
+							<li><%= link_to "My Products", products_path %></li>
+						<% end %>
+					<% end %>
+					<li><%= link_to "HOME", root_url %></li>
+					<% if current_user %>
+						<li><%= link_to "Log out",  logout_path, method: :delete %></li>
+					<% else %>
+						<li><%= link_to "Log in ",  login_path %></li>
+					<% end %>
+				</ul>
+			</nav>
+		</div>
+		<div class="container">
+			<%= form_tag catalog_path, method: :get do %>
+				<%#= label_tag :search_text, 'Search Catalog:' %>
+				<%= text_field_tag :search_text, params[:search_text], placeholder: "search for goods", id: "search-bar" %>
+				<%= submit_tag "Search" %>
+			<% end %>
+			<%#= [current_user.id, cookies[:dummy], valid_cookie_user.id] if current_user and valid_cookie_user %>
+		</div>
+		<div class="container">
+			|
+			<% flash.each do |name, message| %>
+				<div class="<%= name %>"><%= message %></div>
+			<% end %>
+		</div>
+		<!-- <div class="container"> 
+			<nav>
+				<ul class="nav navbar-nav navbar-left">
+					<li><%#= link_to "Account Info", user_path(current_user) %></li>
+					<li><%#= link_to "Orders", orders_path %></li>
+					<li><%#= link_to "Carts", carts_path %></li>
+					<li><%#= link_to "Cart_Items", cart_items_url %></li>
+					<li><%#= link_to "Users", users_path %></li>
+					<li><%#= link_to "Products", products_path %></li>					
+				</ul>
+			</nav>
+		</div> -->
+	</header>
+	<!-- [cart: <%#=current_cart.id if current_cart %>, <%#= session[:cart_id] %>] 
+	[user: <%#=current_user.id if current_user %>, <%#= session[:user_id] %>] -->
+	<div class="container">
+		<%= yield %>
+	</div>
+
+</body>
+
+</html>

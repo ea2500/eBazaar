@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+user1:
+  name: user1
+  email: u1@gmail.com
+  image_url: im1.jpg
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+user2:
+  name: user2
+  email: u2@gmail.com
+  image_url: im2.jpg
+  password_digest: <%= BCrypt::Password.create('secret') %>

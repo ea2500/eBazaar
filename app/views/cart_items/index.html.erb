@@ -1,0 +1,93 @@
+<h1>Cart Items</h1>
+
+<% if @cart_items %>
+  
+  <% if current_user and current_user.admin? %>
+    <p>--under construction for admin--</p>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>owner</th>
+          <th>order</th>
+          <th>cart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |item| %>
+          <tr>
+            <td><%= image_tag item.product.image_url, class: "list-image" %></td>
+            <td><%= item.product.name %> <%#= cart_item.id %> </td>
+            <td>
+              <%= item.quantity %>
+            </td>
+            <td><%= number_to_currency item.product.price %></td>
+            <td> <%= item.product.user ? item.product.user.id : "????" %> </td>
+            <td> <%= item.order ? item.order.id : "none" %> </td>
+            <td> <%= item.cart ? item.cart.id : "none" %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p>--under construction for admin--</p>
+
+
+  <% else %>
+    <%= button_to 'Check out', new_order_path, method: :get %>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <!-- <th></th> -->
+          <!-- <th></th> -->
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% total = 0 %>
+        <% num_of_items = 0 %>
+        <% @cart_items.each do |item| %>
+          <% total += item.product.price * item.quantity  %>
+          <% num_of_items += item.quantity  %>
+          <tr>
+            <td><%= image_tag item.product.image_url, class: "list-image" %></td>
+            <td><%= item.product.name %> <%#= cart_item.id %> </td>
+            <td>
+              <%= item.quantity %>
+            </td>
+            <td><%= number_to_currency item.product.price %></td>
+            <!-- <td><%#= link_to 'Show', cart_item %></td> --
+            <!-- <td><%#= link_to 'Edit', edit_cart_item_path(cart_item) %></td> -->
+            <td><%= link_to 'Delete', item, method: :delete %></td>
+            <td>
+              <% if item.product.user == current_user %>
+              <br>
+               "Are you sure to buy this item?"
+               <br>
+               "This is one of your own posts..."
+               <% end %> 
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td> <strong>Total:</strong> </td>
+          <td><%= num_of_items %> items </td>
+          <td><%= number_to_currency total %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <%= button_to 'Empty Cart', cart_path(session[:cart_id]), method: :delete, data: {confirm: "Are you sure?"} %>
+    <br>
+  <% end %>  
+<% else %>
+  <p> there are no items in your shopping cart...</p>
+  <%= link_to "Shop for items", catalog_url %>
+<% end %>

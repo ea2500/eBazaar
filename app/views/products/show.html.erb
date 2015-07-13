@@ -1,0 +1,45 @@
+
+<%= image_tag(@product.image_url, class: "show-image") %>
+
+<% if logged_in? and current_user == @product.user %>
+  <h2> --- THIS PRODUCT IS ONE OF YOUR POSTS --- </h2>
+<% end %>
+
+<strong><%= @product.name %> (<%= number_to_currency(@product.price) %>) </strong> 
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.body %>
+</p>
+
+<%= button_to "Add to cart", cart_items_path(product_id: @product), class: 'button-cart' %>
+
+<p>
+<% if logged_in? and (current_user == @product.user or current_user.admin?) %>
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'My Products', products_path %>
+<% end %>
+</p>
+
+
+<p>
+  <strong>Owner/User ID:</strong>
+  <%= @product.user.id %>
+</p>
+
+<p>
+  <strong>Owner/User Name:</strong>
+  <%= @product.user.name %>
+</p>
+
+<p>
+  <strong>Owner/User Image:</strong>
+  <%= image_tag(@product.user.image_url, class: 'list-image') %>
+</p>
+
+<p>
+  <strong>Owner/User Contact:</strong>
+  <%= @product.user.email %>
+</p>
+

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @order.email %>
+</p>
+
+<p>
+  <strong>Pay type:</strong>
+  <%= @order.pay_type %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.address %>
+</p>
+
+<p>
+	<strong>-- Ordered Items --</strong>
+	<table>
+		<tr>
+			<th></th>
+			<th>product name</th>
+			<th>quantity</th>
+			<th>product owner</th>
+		<tr>
+	<% @order.cart_items.each do |item| %>
+		<tr>
+			<td> <%= image_tag item.product.image_url, class: "list-image" %> </td>
+			<td> <%= item.product.name %> </td>
+			<td> <%= item.quantity %> </td>
+			<td> <%= item.product.user.id %>
+				<%= image_tag item.product.user.image_url, class: "list-image" %> 
+			  <%= item.product.user.name %> </td>
+		<tr>
+	<% end %>
+</p>
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

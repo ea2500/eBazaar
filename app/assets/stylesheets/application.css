@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+
+/*body{
+	max-width: 85em;
+}*/
+/*#banner{
+	color: white;
+	background: black;
+	padding: 10px;
+	text-align: center;
+}
+
+#columns{
+	background: blue;
+}
+
+#side{
+	position: fixed;
+	top: 1em;
+	float: left;
+	width: 15em;
+	background: yellow;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+#main{
+	float: left, top;
+	background: pink;
+	margin-left: 17em;
+	max-width: 70em;
+}
+
+.sup {
+	width:9em;
+	height: 3em;
+    padding: 5px;
+    margin: 10px;
+    font-size: 12px;
+    border: 4px solid red;
+    border-radius: 25px;
+  }
+
+#logInOut{
+	text-align: center;
+	background: orange;
+}
+
+#search{
+	text-align: center;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+.list-image{
+			max-width: 100px;
+			max-height: 100px;
+		}
+
+.list-small-image{
+	max-width: 30px;
+	max-height: 30px;
+}
+
+.success{
+	color: green;
+}
+
+.failure{
+	color: red;
+}
+.notice{
+	color: yellow;
+}
+
+.footer{
+	margin-left: 17em;
+}*/
