@@ -6,18 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name:  "jim",
-             email: "jim@jim.com",
-             password:              "jimmish",
-             password_confirmation: "jimmish",
-             image_url: "JimsLabFace.jpg",
-             admin: true)
-User.create!(name:  "tim",
-             email: "tim@tim.com",
-             password:              "timmish",
-             password_confirmation: "timmish",
-             image_url: "ab.jpg",
-             admin: true)
+# User.create!(name:  "jim",
+#              email: "jim@jim.com",
+#              password:              "jimmish",
+#              password_confirmation: "jimmish",
+#              image_url: "JimsLabFace.jpg",
+#              admin: true)
+# User.create!(name:  "tim",
+#              email: "tim@tim.com",
+#              password:              "timmish",
+#              password_confirmation: "timmish",
+#              image_url: "ab.jpg",
+#              admin: true)
 
 nnn=25
 user_index=(1..nnn).to_a.shuffle
