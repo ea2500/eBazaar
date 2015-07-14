@@ -48,7 +48,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'will_paginate', '3.0.7'
 gem 'faker',         '1.4.2'
-gem 'minitest-reporters'
+gem 'minitest-reporters', group: [:development, :test]
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 
