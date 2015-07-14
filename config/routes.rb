@@ -1,11 +1,8 @@
 Site1::Application.routes.draw do
   
   resources :orders
-
   resources :cart_items
-
   resources :carts
-
   resources :products
   resources :users
 
