@@ -51,6 +51,7 @@ gem 'faker',         '1.4.2'
 gem 'minitest-reporters', group: [:development, :test]
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
+gem 'image_suckr'
 
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production

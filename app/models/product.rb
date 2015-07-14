@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 	
-	belongs_to :user
+  belongs_to :user
   has_many :cart_items
   before_destroy :ensure_not_referenced 
 

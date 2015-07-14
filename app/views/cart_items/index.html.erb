@@ -19,7 +19,7 @@
       <tbody>
         <% @cart_items.each do |item| %>
           <tr>
-            <td><%= image_tag item.product.image_url, class: "list-image" %></td>
+            <td><%= image_tag item.product.image_url, class: "list-image" if item.product.image_url %></td>
             <td><%= item.product.name %> <%#= cart_item.id %> </td>
             <td>
               <%= item.quantity %>
