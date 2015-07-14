@@ -29,7 +29,7 @@ user_index.each do |n|
                     email: email ,
                     password:              'xxxxxx' ,
                     password_confirmation: 'xxxxxx' ,
-                    image_url: Faker::Avatar.image
+                    image_url: Faker::Avatar.image)
                     # image_url: "face"+rand(1..10).to_s+".JPG")
   (rand(10)+0).times do
     user.products.create( name: Faker::Commerce.product_name ,
