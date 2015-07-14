@@ -6,8 +6,8 @@ class VitrinController < ApplicationController
 			@query=params[:search_text].split.uniq
 			@products=Product.all
 			@query.each do |q|
-				temp1=Product.where("name LIKE ?", "%#{q}%")
-				temp2=Product.where("body LIKE ?", "%#{q}%")
+				temp1=Product.where("name ILIKE ?", "%#{q}%")
+				temp2=Product.where("body ILIKE ?", "%#{q}%")
 				@products = @products & (temp1 | temp2)
 			end
 
