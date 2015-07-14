@@ -30,8 +30,9 @@
 					<li><%= link_to "HOME", root_url %></li>
 					<% if current_user %>
 						<li><%= link_to "Log out",  logout_path, method: :delete %></li>
+						<li><%= image_tag current_user.image_url, class: "list-image" if current_user %></li>
 					<% else %>
-						<li><%= link_to "Log in ",  login_path %></li>
+						<li><%= link_to "Log in",  login_path %></li>
 					<% end %>
 				</ul>
 			</nav>
@@ -45,7 +46,7 @@
 			<%#= [current_user.id, cookies[:dummy], valid_cookie_user.id] if current_user and valid_cookie_user %>
 		</div>
 		<div class="container">
-			|
+			| 
 			<% flash.each do |name, message| %>
 				<div class="<%= name %>"><%= message %></div>
 			<% end %>
