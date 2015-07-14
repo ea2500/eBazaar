@@ -6,18 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name:  "jim",
-             email: "jim@jim.com",
-             password:              "jimmish",
-             password_confirmation: "jimmish",
-             image_url: "JimsLabFace.jpg",
-             admin: true)
-User.create!(name:  "tim",
-             email: "tim@tim.com",
-             password:              "timmish",
-             password_confirmation: "timmish",
-             image_url: "ab.jpg",
-             admin: true)
+# User.create!(name:  "jim",
+#              email: "jim@jim.com",
+#              password:              "jimmish",
+#              password_confirmation: "jimmish",
+#              image_url: "JimsLabFace.jpg",
+#              admin: true)
+# User.create!(name:  "tim",
+#              email: "tim@tim.com",
+#              password:              "timmish",
+#              password_confirmation: "timmish",
+#              image_url: "ab.jpg",
+#              admin: true)
 
 nnn=25
 user_index=(1..nnn).to_a.shuffle
@@ -30,7 +30,7 @@ user_index.each do |n|
                     password:              'xxxxxx' ,
                     password_confirmation: 'xxxxxx' ,
                     # image_url: Faker::Avatar.image
-                    image_url: "object"+rand(15).to_s+".JPG")
+                    image_url: "face"+rand(1..10).to_s+".JPG")
   (rand(10)+0).times do
     user.products.create( name: Faker::Commerce.product_name ,
                           price: Faker::Commerce.price ,
