@@ -27,7 +27,7 @@
       <% else %>
         <tr class="<%= cycle('line-odd','line-even') %>">
       <% end %>
-        <td class='img-cell'><%= image_tag(user.image_url, class: "user-image") %></td>
+        <td class='img-cell'><%= image_tag(user.image_url, class: "list-image") %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.products.size %></td>
