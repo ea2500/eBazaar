@@ -1,0 +1,29 @@
+
+<table>
+  <!-- <thead>
+    <tr>
+      <th> image </th>
+      <th> Name+Description+Price </th>
+      <th> Seller name+email+ID </th>
+      <th> Mark-It </th>
+    </tr>
+  </thead> -->
+
+  <tbody>
+    <% @products.each do |product| %>
+  
+      <tr class="<%= cycle('line-odd','line-even') %>">
+        <% if logged_in? and current_user == product.user %>
+          <tr class='line-user'>
+        <% end %>
+        <td class='img-cell'> <%= image_tag(product.image_url, class: "catalog-image") %></td>
+        <td><strong><%= product.name %></strong><br/>
+          <%= truncate(product.body, length: 200) %><br/>
+          <strong><%= number_to_currency(product.price) %> </strong><%= link_to "moere details", product_path(product)%></td>
+        <td>
+          <%= button_to "add to cart", cart_items_path(product_id: product), class: "button-cart" %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
