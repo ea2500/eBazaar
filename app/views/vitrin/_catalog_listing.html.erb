@@ -18,7 +18,7 @@
         <% if logged_in? and current_user == product.user %>
           <tr class='line-user'>
         <% end %>
-        <td class='img-cell'> <%= image_tag(product.image_url, class: "catalog-image") %></td>
+        <td class='img-cell'> <%= image_tag(product.image_url, class: "list-image") %></td>
         <td><strong><%= product.name %></strong><br/>
           <%= truncate(product.body, length: 200) %><br/>
           <strong><%= number_to_currency(product.price) %> </strong><%= link_to "moere details", product_path(product)%></td>
