@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # before_action :log_out_user, only: :new
   before_action :bounce_not_logged_in_user, only: [:show, :edit, :update, :destroy]
   before_action :bounce_incorrect_user,     only: [:show, :edit, :update, :destroy]
   before_action :bounce_non_admin_user,     only: [:index]
@@ -30,14 +29,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.set_activation_digest
 
     respond_to do |format|
       if @user.save
-        log_in @user
-        UserMailer.welcome(@user).deliver
-        format.html { redirect_to @user }
-        format.json { render action: 'show', status: :created, location: @user }
-        flash[:success]='User was successfully created and logged in ...' 
+        UserMailer.account_activation(@user).deliver
+        # flash[:success]='User was successfully created. Need activation: ' 
+        format.html { redirect_to root_url, notice: "Please check your email for your account activation..." }
+        format.json { render action: 'show', status: :created, location: root_url }
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }

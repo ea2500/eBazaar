@@ -12,27 +12,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div>
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: 'required', class: "field" %>
   </div>
-  <div class="field">
+  <div>
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, placeholder: 'required for account activation', class: "field" %>
   </div>
-  <div class="field">
+  <div>
     <%= f.label :image_url, "Image URL" %><br>
-    <%= f.text_field :image_url %>
+    <%= f.text_field :image_url, placeholder: 'optional', class: "field" %>
   </div>
-  <div class="field">
+  <div>
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, placeholder: 'required', class: "field" %>
   </div>
   <div>
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: 'required', class: "field" %>
   </div>
-  <div class="actions">
+  <p></p>
+  <div>
     <%= f.submit %>
   </div>
 <% end %>

@@ -51,7 +51,7 @@ module SessionsHelper
 	def log_user_in_with_cookies
     log_user_in valid_cookie_user, remember_me: true
     redirect_to catalog_path
-    flash[:success]="Remembered logged in..."
+    flash[:success]="Remembered and logged in..."
 	end
 
 	

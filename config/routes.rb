@@ -1,5 +1,6 @@
 Site1::Application.routes.draw do
   
+  resources :account_activations, only: [:edit] 
   resources :orders
   resources :cart_items
   resources :carts

@@ -1,3 +1,7 @@
-UserMailer#account_activation
+Hi <%= @user.name %>,
 
-<%= @greeting %>, find me in app/views/app/views/user_mailer/account_activation.text.erb
+For your account activation to eBazaar please click the link below:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+Thanks,
