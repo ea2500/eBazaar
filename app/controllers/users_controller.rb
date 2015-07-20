@@ -29,10 +29,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user.set_activation_digest
 
     respond_to do |format|
       if @user.save
+        @user.set_activation_digest
         UserMailer.account_activation(@user).deliver
         # flash[:success]='User was successfully created. Need activation: ' 
         format.html { redirect_to root_url, notice: "Please check your email for your account activation..." }
