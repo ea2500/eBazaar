@@ -24,7 +24,7 @@
     <%= f.label :address %><br>
     <%= f.text_area :address, rows: 3, cols: 42 %>
   </div>
-  
+  This is a mock order. We wont ask any further information like credit card number and such. You can provide a fake name and address but if you want to test the emailing feature of this app, email address should be real... If you provide a real and valid email address, you will recieve a comfirmational email about your "order". Thaks for testng this app.
   <div class="field">
     <%= f.label :pay_type, "Payment type" %><br>
     <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: "Select a payment type" %>

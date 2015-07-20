@@ -23,5 +23,5 @@
 
 <% @us.each do |user| %>
 	<%= link_to  user.email+" "+user.id.to_s+'  | '+user.products.count.to_s, 
-						login_url(email: user.email, password: "xxxxxx") %>
+						login_url(email: user.email, password: "xxxxxx") %> 
 <% end %>
