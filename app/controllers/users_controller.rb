@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params_for_create)
 
     respond_to do |format|
       if @user.save
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(user_params_for_update)
         format.html { redirect_to @user}
         format.json { head :no_content }
         flash[:success]='User was successfully updated.' 
@@ -76,8 +76,17 @@ class UsersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
+    def user_params_for_create
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image_url)
+    end
+
+    def user_params_for_update
+      if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
+        params.require(:user).permit(:name, :email, :image_url, :password, :password_confirmation)
+      else
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :image_url)
+      end
+      
     end
 
     def bounce_incorrect_user
