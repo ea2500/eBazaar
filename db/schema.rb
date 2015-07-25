@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719213725) do
+ActiveRecord::Schema.define(version: 20150725175501) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 20150719213725) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
 end

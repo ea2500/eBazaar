@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	attr_accessor :dummy_token, :activation_token
+	attr_accessor :dummy_token, :activation_token, :reset_pswd_token
 
 	has_many :products, dependent: :destroy
 
@@ -25,6 +25,13 @@ class User < ActiveRecord::Base
 		@activation_token=SecureRandom.urlsafe_base64
 		activation_digest=BCrypt::Password.create(@activation_token)
 		self.update_attribute(:activation_digest, activation_digest)
+	end
+
+	def create_reset_digest
+		@reset_pswd_token=SecureRandom.urlsafe_base64
+		reset_password_digest=BCrypt::Password.create(@reset_pswd_token)
+		self.update_attribute(:reset_digest, reset_password_digest)
+		self.update_attribute(:reset_sent_at, Time.zone.now)
 	end
 
 end
