@@ -15,20 +15,9 @@
 			<%= link_to "Shopping Cart [#{number_of_cart_items(current_cart)}]", cart_items_url, id:'cart-logo' %>
 			<nav>
 				<ul class="nav navbar-nav navbar-right">
-					<% if current_user %>
-						<li><%= link_to "Account Info", user_path(current_user) %></li>
-						<% if current_user.admin? %>
-							<li><%= link_to "All Orders", orders_path %></li>
-							<li><%= link_to "All Carts", carts_path %></li>
-							<li><%= link_to "All Cart_Items", cart_items_url %></li>
-							<li><%= link_to "All Users", users_path %></li>
-							<li><%= link_to "All Products", products_path %></li>
-						<% else %>
-							<li><%= link_to "My Products", products_path %></li>
-						<% end %>
-					<% end %>
 					<li><%= link_to "HOME", root_url %></li>
-					<% if current_user %>
+					<% if logged_in? %>
+						<li><%= link_to "Account Info", user_path(current_user) %></li>
 						<li><%= link_to "Log out",  logout_path, method: :delete %></li>
 						<li><%= image_tag current_user.image_url, class: "user-image" if current_user %></li>
 					<% else %>
@@ -46,23 +35,23 @@
 			<%#= [current_user.id, cookies[:dummy], valid_cookie_user.id] if current_user and valid_cookie_user %>
 		</div>
 		<div class="container">
-			| 
+		<nav>
+			<div id='info-bar'>
+			<% if logged_in? %>
+				<% if current_user.admin? %>
+					<span class="admin-link"><%= link_to "Orders", orders_path %></span>
+					<span class="admin-link"><%= link_to "Carts", carts_path %></span>
+					<span class="admin-link"><%= link_to "Cart_Items", cart_items_url %></span>
+					<span class="admin-link"><%= link_to "All Users", users_path %></span>
+				<% end %>
+				<%= [current_user.id, current_user.name] %>
+			<% end %>
 			<% flash.each do |name, message| %>
 				<div class="<%= name %>"><%= message %></div>
 			<% end %>
+			</div>
+		</nav>
 		</div>
-		<!-- <div class="container"> 
-			<nav>
-				<ul class="nav navbar-nav navbar-left">
-					<li><%#= link_to "Account Info", user_path(current_user) %></li>
-					<li><%#= link_to "Orders", orders_path %></li>
-					<li><%#= link_to "Carts", carts_path %></li>
-					<li><%#= link_to "Cart_Items", cart_items_url %></li>
-					<li><%#= link_to "Users", users_path %></li>
-					<li><%#= link_to "Products", products_path %></li>					
-				</ul>
-			</nav>
-		</div> -->
 	</header>
 	<!-- [cart: <%#=current_cart.id if current_cart %>, <%#= session[:cart_id] %>] 
 	[user: <%#=current_user.id if current_user %>, <%#= session[:user_id] %>] -->

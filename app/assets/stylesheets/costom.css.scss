@@ -111,8 +111,8 @@ td, th{
 .success, .failure, .notice, .inform{
 	text-align: center;
 	display: inline;
-	float: right;
-	padding-left: 10px;
+	float: left;
+	padding-left: 0px;
 }
 .success{
 	color: pink;
@@ -149,4 +149,15 @@ td, th{
 }
 .field{
 	width: 20em;
+}
+#info-bar{
+	color: white;
+	text-align: right;
+	height: 1.6em;
+}
+.container{
+	max-width: 60em;
+}
+.admin-link{
+	padding: 0.5em;
 }

@@ -2,7 +2,7 @@ class AccountActivationsController < ApplicationController
 
 	def edit
 		user=User.find_by(email: params[:email])
-    if user and BCrypt::Password.new(user.activation_digest) == params[:id]
+	    if user and BCrypt::Password.new(user.activation_digest) == params[:id]
     	user.update_attribute(:activated, true)
     	user.update_attribute(:activated_at, Time.zone.now)
     	UserMailer.welcome(user).deliver

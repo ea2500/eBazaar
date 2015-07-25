@@ -28,7 +28,6 @@ user_index=(1..13).to_a.shuffle
 user_index.each do |n|
   name  = Faker::Name.name
   email = "xxx#{n+1}@xxx.xxx"
-  password = "password"
   user=User.create( name:  name ,
                     email: email ,
                     password:              'xxxxxx' ,
@@ -50,7 +49,6 @@ user_index=(14..17).to_a.shuffle
 user_index.each do |n|
   name  = Faker::Name.name
   email = "xxx#{n+1}@xxx.xxx"
-  password = "password"
   user=User.create( name:  name ,
                     email: email ,
                     password:              'xxxxxx' ,
