@@ -43,7 +43,7 @@
 					<span class="admin-link"><%= link_to "Cart_Items", cart_items_url %></span>
 					<span class="admin-link"><%= link_to "All Users", users_path %></span>
 				<% end %>
-				<%= [current_user.id, current_user.name] %>
+				<%= [current_user.name] %>
 			<% end %>
 			<% flash.each do |name, message| %>
 				<div class="<%= name %>"><%= message %></div>
