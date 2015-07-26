@@ -56,7 +56,7 @@ class PasswordResetsController < ApplicationController
 		end
 
 		def bounce_logged_in_user
-			redirect_to edit_user_url, notice: "You logged in already..."
+			redirect_to edit_user_path(current_user), notice: "You logged in already..." if logged_in?
 		end
 
 end
