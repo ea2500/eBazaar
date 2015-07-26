@@ -1,4 +1,5 @@
 class PasswordResetsController < ApplicationController
+	RESET_PASSWORD_TIME = 2*60 # minutes
 	before_action :bounce_logged_in_user
 	before_action :bounce_unauthorized_or_expired_token, only: [:edit, :update]
 
@@ -50,13 +51,15 @@ class PasswordResetsController < ApplicationController
 			@user = User.find_by(email: params[:email])
 			if not (@user and @user.activated? and BCrypt::Password.new(@user.reset_digest) == params[:id])
 				redirect_to root_url, notice: "Failed to authorize the link...#{@user.reset_digest}" 
-			elsif @user.reset_sent_at < 2.hours.ago
-				redirect_to new_password_reset_url, notice: "Password reset auhorization link expired, try again..." 
+			elsif @user.reset_sent_at < RESET_PASSWORD_TIME.minutes.ago
+				redirect_to new_password_reset_url, 
+				notice: "Password reset auhorization link expired, try again..." 
 			end
 		end
 
 		def bounce_logged_in_user
-			redirect_to edit_user_path(current_user), notice: "You logged in already..." if logged_in?
+			redirect_to edit_user_path(current_user), 
+			notice: "You logged in already... Log out first to reset password" if logged_in?
 		end
 
 end

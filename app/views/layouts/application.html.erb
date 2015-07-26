@@ -27,24 +27,29 @@
 			</nav>
 		</div>
 		<div class="container">
-			<%= form_tag catalog_path, method: :get do %>
-				<%#= label_tag :search_text, 'Search Catalog:' %>
-				<%= text_field_tag :search_text, params[:search_text], placeholder: "search for goods", id: "search-bar" %>
-				<%= submit_tag "Search" %>
-			<% end %>
-			<%#= [current_user.id, cookies[:dummy], valid_cookie_user.id] if current_user and valid_cookie_user %>
+			<div id='search-bar'>
+				<%= form_tag catalog_path, method: :get, id: "search-box"  do %>
+					<%#= label_tag :search_text, 'Search Catalog:' %>
+					<%= text_field_tag :search_text, params[:search_text], placeholder: "search for goods" %>
+					<%= submit_tag "Search" %>
+				<% end %>
+			
+				<div id='info-bar'>
+				<% if logged_in? %>
+					<% if current_user.admin? %>
+						<span class="admin-link"><%= link_to "Orders", orders_path %></span>
+						<span class="admin-link"><%= link_to "Carts", carts_path %></span>
+						<span class="admin-link"><%= link_to "Cart_Items", cart_items_url %></span>
+						<span class="admin-link"><%= link_to "All Users", users_path %></span>
+					<% end %>
+					<%= current_user.name %>
+				<% end %>
+				</div>
+
+			</div>
 		</div>
 		<div class="container">
-			<div id='info-bar'>
-			<% if logged_in? %>
-				<% if current_user.admin? %>
-					<span class="admin-link"><%= link_to "Orders", orders_path %></span>
-					<span class="admin-link"><%= link_to "Carts", carts_path %></span>
-					<span class="admin-link"><%= link_to "Cart_Items", cart_items_url %></span>
-					<span class="admin-link"><%= link_to "All Users", users_path %></span>
-				<% end %>
-				<%= [current_user.name] %>
-			<% end %>
+			<div id='flash-bar'>
 			<% flash.each do |name, message| %>
 				<div class="<%= name %>"><%= message %></div>
 			<% end %>

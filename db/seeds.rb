@@ -24,7 +24,7 @@ User.create!(name:  "tim",
              activated_at: Time.zone.now)
 
 # activated users
-user_index=(1..13).to_a.shuffle
+user_index=(1..16).to_a.shuffle
 user_index.each do |n|
   name  = Faker::Name.name
   email = "xxx#{n+1}@xxx.xxx"
@@ -42,17 +42,4 @@ user_index.each do |n|
                           image_url: "object"+rand(15).to_s+".JPG",
                           body: Faker::Lorem.paragraph(sentence_count=15))
   end
-end
-
-# non activated users
-user_index=(14..17).to_a.shuffle
-user_index.each do |n|
-  name  = Faker::Name.name
-  email = "xxx#{n+1}@xxx.xxx"
-  user=User.create( name:  name ,
-                    email: email ,
-                    password:              'xxxxxx' ,
-                    password_confirmation: 'xxxxxx' ,
-                    # image_url: Faker::Avatar.image)
-                    image_url: "face"+rand(1..10).to_s+".JPG")
 end

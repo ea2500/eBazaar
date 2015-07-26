@@ -1,7 +1,7 @@
 Site1::Application.routes.draw do
   
   resources :password_resets, only: [:new, :edit, :create, :update]
-  resources :account_activations, only: [:edit] 
+  resources :account_activations, only: [:new, :edit, :create] 
   resources :orders
   resources :cart_items
   resources :carts

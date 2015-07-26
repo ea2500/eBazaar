@@ -101,31 +101,7 @@ td, th{
 .line-admin{
 	background: yellow;
 }
-#search-bar{
-	margin-top: 5px;
-	margin-bottom: 5px;
-	display: inline;
-	width: 20em;
-	display: inline;
-}
-.success, .failure, .notice, .inform{
-	text-align: center;
-	display: inline;
-	float: left;
-	padding-left: 0px;
-}
-.success{
-	color: pink;
-}
-.failure{
-	color: red;
-}
-.notice{
-	color: yellow;
-}
-.inform{
-	color: white;
-}
+
 .merhaba{
 	text-align: center;
 	background-color: pink;
@@ -150,14 +126,56 @@ td, th{
 .field{
 	width: 20em;
 }
-#info-bar{
-	color: white;
-	text-align: right;
-	height: 1.6em;
-}
 .container{
 	max-width: 70em;
 }
 .admin-link{
 	padding: 0.5em;
 }
+
+
+
+
+
+#search-bar{
+}
+#search-box{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 20em;
+	display: inline;
+}
+#info-bar{
+	color: white;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	float: right;
+	text-align: right;
+	display: inline;
+}
+
+#flash-bar{
+	color: white;
+	text-align: left;
+	height: 1.6em;
+}
+.success, .failure, .notice, .inform{
+	text-align: center;
+	display: inline;
+	float: left;
+	padding-left: 0px;
+}
+.success{
+	color: pink;
+}
+.failure{
+	color: red;
+}
+.notice{
+	color: yellow;
+}
+.inform{
+	color: white;
+}
+
+
