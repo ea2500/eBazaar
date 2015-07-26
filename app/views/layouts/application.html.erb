@@ -18,6 +18,7 @@
 					<li><%= link_to "HOME", root_url %></li>
 					<% if logged_in? %>
 						<li><%= link_to "Account Info", user_path(current_user) %></li>
+						<li><%= link_to "My Products", products_path %></li>
 						<li><%= link_to "Log out",  logout_path, method: :delete %></li>
 						<li><%= image_tag current_user.image_url, class: "user-image" if current_user %></li>
 					<% else %>
@@ -27,10 +28,10 @@
 			</nav>
 		</div>
 		<div class="container">
-			<div id='search-bar'>
-				<%= form_tag catalog_path, method: :get, id: "search-box"  do %>
+			<div>
+				<%= form_tag catalog_path, method: :get, id: 'search-bar' do %>
 					<%#= label_tag :search_text, 'Search Catalog:' %>
-					<%= text_field_tag :search_text, params[:search_text], placeholder: "search for goods" %>
+					<%= text_field_tag :search_text, params[:search_text], placeholder: "search for goods", id: "search-box" %>
 					<%= submit_tag "Search" %>
 				<% end %>
 			

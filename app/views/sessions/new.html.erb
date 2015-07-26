@@ -20,9 +20,10 @@
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 <p>Did not recieve account activation email? <%= link_to "Try again !", new_account_activation_path %></p>
-
+<!-- 
 
 <% @us.each do |user| %>
-	<%= link_to  user.email+" "+user.id.to_s+'  | '+user.products.count.to_s, 
+	<%#= link_to  user.email+" "+user.id.to_s+'  | '+user.products.count.to_s, 
 						login_url(email: user.email, password: "xxxxxx") %> 
 <% end %>
+ -->
