@@ -17,6 +17,7 @@
       <th></th>
       <th></th>
       <th>admin?</th>
+      <th>activated?</th>
     </tr>
   </thead>
 
@@ -40,6 +41,7 @@
         <td><%= link_to 'Destroy', user, class: "list-link", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
         <td><%= user.admin? %></td>
+        <td><%= user.activated? %></td>
       </tr>
     <% end %>
     

@@ -35,9 +35,9 @@
 			<%#= [current_user.id, cookies[:dummy], valid_cookie_user.id] if current_user and valid_cookie_user %>
 		</div>
 		<div class="container">
-			|
 		<nav>
 			<div id='info-bar'>
+				|
 			<% if logged_in? %>
 				<% if current_user.admin? %>
 					<span class="admin-link"><%= link_to "Orders", orders_path %></span>
