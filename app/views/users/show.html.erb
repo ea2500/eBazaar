@@ -14,7 +14,7 @@
         <%= @user.email %>
       </p>
       <p>
-        <%= link_to 'Edit', edit_user_path(@user) %> 
+        <%= link_to 'Edit Account Info', edit_user_path(@user) %> 
         <% if logged_in? and current_user.admin? %>
         | <%= link_to 'Back', users_path %>
         <% end %>
@@ -23,29 +23,36 @@
   </tr>
 </table>
 
+<% if @user.products.count > 0 %>
 
-
-<h4> List of products posted </h4>
-<% products=@user.products.paginate(page: params[:page], per_page: 5) %>
-<%= will_paginate products, class: "pagin" %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% products.each do |product| %>
+  <h4> List of products posted </h4>
+  <% products=@user.products.paginate(page: params[:page], per_page: 5) %>
+  <%= will_paginate products, class: "pagin" %>
+  <table>
+    <thead>
       <tr>
-        <td><%= product.name %></td>
-        <td><%= number_to_currency(product.price) %></td>
+        <th>Name</th>
+        <th>Price</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%#= will_paginate products, class: "pagin" %>
+    </thead>
+
+    <tbody>
+      <% products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency(product.price) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%#= will_paginate products, class: "pagin" %>
+
+<% else %>
+  
+    <p> No products posted by you currently... </p>
+
+<% end %>
+
 
 <%= link_to 'Add/Edit your products', products_path  %>
 <% unless @user.admin? %>
