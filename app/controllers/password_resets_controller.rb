@@ -59,7 +59,7 @@ class PasswordResetsController < ApplicationController
 
 		def bounce_logged_in_user
 			redirect_to edit_user_path(current_user), 
-			notice: "You logged in already... Log out first to reset password" if logged_in?
+			notice: "You logged in already... Log out first or edit your account" if logged_in?
 		end
 
 end
