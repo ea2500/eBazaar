@@ -22,7 +22,7 @@ Site1::Application.configure do
     domain:               "domain.of.sender.net",
     authentication:       "plain",
     user_name:            "ebazaar100",
-    password:             "ebaZaar123",
+    password:             "xxxxxxxxxxx",
     enable_starttls_auto: true
   } 
   # host='localhost:3000'
